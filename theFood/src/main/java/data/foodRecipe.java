@@ -10,11 +10,12 @@ public class foodRecipe implements Comparable<foodRecipe> {
 	//public List<Vege> vegeIngredient;
 	private String Description;
 	
-	public String url;
+	private String url;
 	
 	private String Name;
 	
 	public int priority = 0;
+	
 	
 	
 	public foodRecipe() {
@@ -22,7 +23,7 @@ public class foodRecipe implements Comparable<foodRecipe> {
 	}
 	
 	public foodRecipe(String n,List<Meat> food, String descp,String u){
-		url =u;
+		setUrl(u);
 		
 		Name =n;
 		meatIngredient = food;
@@ -32,7 +33,7 @@ public class foodRecipe implements Comparable<foodRecipe> {
 		Description = descp;
 	}
 	
-	public void ComparebyIngredient(List<String> in) {
+	public int ComparebyIngredient(List<String> in) {
 		if(meatIngredient!=null) {
 		for(int i=0;i<meatIngredient.size();i++) {
 			if(in.contains(meatIngredient.get(i).getName().toLowerCase())) {
@@ -40,13 +41,13 @@ public class foodRecipe implements Comparable<foodRecipe> {
 			}
 		}
 		}
-		
+		int x =priority;
+		priority =0;
+		return x;
 	}
 	
 	
-	
-	
-	public void ComparebyFood(List<Meat> in) {
+	public int ComparebyFood(List<Meat> in) {
 		if(meatIngredient!=null) {
 		for(int i=0;i<meatIngredient.size();i++) {
 			if(in.contains(meatIngredient.get(i))) {
@@ -54,6 +55,9 @@ public class foodRecipe implements Comparable<foodRecipe> {
 			}
 		}
 		}
+		int x =priority;
+		priority =0;
+		return x;
 		/*
 		if(conIngredient!=null){
 		for(int i=0;i<conIngredient.size();i++) {
@@ -94,6 +98,14 @@ public class foodRecipe implements Comparable<foodRecipe> {
 	
 	public String toString() {
 		return Name;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 }

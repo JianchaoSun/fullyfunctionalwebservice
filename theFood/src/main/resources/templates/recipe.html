@@ -12,19 +12,16 @@
         
     </head>
     <body>
+        <a th:href="@{/}">Go back to home<a/>
         
         <h1 th:inline="text" >
    [[${title}]]
 </h1>
+        <img th:src="@{${img}}"/>
         
-        <img src= th:src="@{img}" >
-        
-        
-         
-         
           <h3>Ingredients </h3>
         <th:block th:each="meat: ${Meats}">
-            <a th:href="@{/(id=${meat})}">  [[${meat}]]</a> <br/>
+            <a th:href="@{/(id=${meat})}">  [[${meat.Name}]] Measurement: [[${meat.Weight}]]</a> <br/>
         </th:block>
         
         
